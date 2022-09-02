@@ -8,7 +8,7 @@ O projeto de desenvolvimento é levado em conta algo que podemos construir, e ta
 
 # Roadmap que podemos seguir
 
-A ter um inicio de projeto, a ideia é desenvolver o app com as principais tecnologias de hoje em dia e alguns requisitos já foram definidos:
+A ideia é desenvolver o app com as principais tecnologias de hoje em dia e alguns requisitos já foram definidos:
 
 - 1 - Utilizar o Compose para criação de Layout
 - 2 - Utilizar DataStore
