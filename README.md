@@ -26,6 +26,5 @@ Um aplicativo que consiga...
 - Iremos modularizar nosso aplicativo, implementando features por modulos e separando oq é comum para todos.
 - Seguiremos conceitos de Clean Architecture
 
-![1_LldbQQRy3_ujZHbUU7X64Q](https://user-images.githubusercontent.com/22418520/188057625-5cb97da0-7386-4f64-8f86-a77c916c5978.png)
-
+![output-onlinepngtools](https://user-images.githubusercontent.com/22418520/188058006-ae6c4aa7-222a-47c5-a198-803363818570.png)
 
