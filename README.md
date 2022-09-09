@@ -23,7 +23,7 @@ Com desafio de layout com base em um projeto do Dribble (https://dribbble.com/sh
 
 |Desafio tela principal | Desafio tela de listagem |
 |----------|----------|
-| <img src="https://user-images.githubusercontent.com/22418520/189263926-f0e7fc83-8a5d-4ee9-b3be-7cec407e0793.png" alt="principal" width="300"/> | <img src="https://user-images.githubusercontent.com/22418520/189264074-fb801ff7-e5df-4537-8b8c-f2b4fcbc97f1.png" alt="listagem" width="300"/> |
+| <img src="https://user-images.githubusercontent.com/22418520/189264074-fb801ff7-e5df-4537-8b8c-f2b4fcbc97f1.png" alt="listagem" width="300"/> | <img src="https://user-images.githubusercontent.com/22418520/189263926-f0e7fc83-8a5d-4ee9-b3be-7cec407e0793.png" alt="principal" width="300"/> |
 
 
 # Como iremos desenvolver?
