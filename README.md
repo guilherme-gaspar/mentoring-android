@@ -22,7 +22,9 @@ Um aplicativo que consiga consumir a API de Harry Potter: https://hp-api.herokua
 Com desafio de layout com base em um projeto do Dribble (https://dribbble.com/shots/14748778-Task-Manager-Mobile)
 
 * Desafio tela principal:
-![Today lection](https://user-images.githubusercontent.com/22418520/189263926-f0e7fc83-8a5d-4ee9-b3be-7cec407e0793.png =250x100)
+![Today lection](https://user-images.githubusercontent.com/22418520/189263926-f0e7fc83-8a5d-4ee9-b3be-7cec407e0793.png =250x)
+* Desafio tela de listagem:
+![Menu](https://user-images.githubusercontent.com/22418520/189264074-fb801ff7-e5df-4537-8b8c-f2b4fcbc97f1.png)
 
 
 
