@@ -1,8 +1,8 @@
-package com.app.mentoriaandroid.domain
+package com.app.mentoriaandroid.domain.model
 
 import com.app.mentoriaandroid.data.model.WandResponse
 
-data class Characters(
+data class InfoCharacters(
         val name: String,
         val species: String,
         val house: String,

@@ -1,23 +1,15 @@
 package com.app.mentoriaandroid.data.datasource
 
-import com.app.mentoriaandroid.data.excpetion.InternalServerException
-import com.app.mentoriaandroid.data.excpetion.InternetConnectionException
 import com.app.mentoriaandroid.data.mapper.map
 import com.app.mentoriaandroid.data.service.HarryPotterService
-import com.app.mentoriaandroid.domain.Characters
-import okio.IOException
+import com.app.mentoriaandroid.domain.model.InfoCharacters
 
 internal class GetCharacterRemoteDataSourceImpl(private val harryPotterService: HarryPotterService) :
     GetCharacterRemoteDataSource {
-    override suspend fun getCharacter(): Result<Characters> =
-        harryPotterService.getCharacters().map { response ->
-            response.map()
-        }.recoverCatching { exception ->
-            return Result.failure(
-                when (exception) {
-                    is IOException -> InternetConnectionException(exception.message.orEmpty())
-                    else -> InternalServerException(exception.message.orEmpty())
-                }
-            )
+    override suspend fun getCharacter(): Result<List<InfoCharacters>> =
+        harryPotterService.getCharacters().map {
+            it.map { response ->
+                response.map()
+            }
         }
 }

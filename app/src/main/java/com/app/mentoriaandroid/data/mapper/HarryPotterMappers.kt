@@ -1,11 +1,11 @@
 package com.app.mentoriaandroid.data.mapper
 
-import com.app.mentoriaandroid.data.model.CharactersResponse
+import com.app.mentoriaandroid.data.model.InfoCharactersResponse
 import com.app.mentoriaandroid.data.model.WandResponse
-import com.app.mentoriaandroid.domain.Characters
+import com.app.mentoriaandroid.domain.model.InfoCharacters
 
-internal fun CharactersResponse.map() =
-    Characters(
+internal fun InfoCharactersResponse.map() =
+    InfoCharacters(
         name = name,
         species = species,
         house = house,
