@@ -1,8 +1,8 @@
 package com.app.mentoriaandroid.data.mapper
 
 import com.app.mentoriaandroid.data.model.InfoCharactersResponse
-import com.app.mentoriaandroid.data.model.WandResponse
 import com.app.mentoriaandroid.domain.model.InfoCharacters
+import com.app.mentoriaandroid.domain.model.Wand
 
 internal fun InfoCharactersResponse.map() =
     InfoCharacters(
@@ -10,14 +10,12 @@ internal fun InfoCharactersResponse.map() =
         species = species,
         house = house,
         dateOfBirth = dateOfBirth,
-        yearOfBirth = yearOfBirth,
         wizard = wizard,
-        wand = WandResponse(
+        wand = Wand(
             wood = wand.wood,
-            core = wand.core,
-            length = wand.length
+            core = wand.core
         ),
         patronus = patronus,
         actor = actor,
-        image = image
+        image = image,
     )

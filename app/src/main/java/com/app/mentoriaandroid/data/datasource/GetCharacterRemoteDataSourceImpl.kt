@@ -6,10 +6,14 @@ import com.app.mentoriaandroid.domain.model.InfoCharacters
 
 internal class GetCharacterRemoteDataSourceImpl(private val harryPotterService: HarryPotterService) :
     GetCharacterRemoteDataSource {
-    override suspend fun getCharacter(): Result<List<InfoCharacters>> =
-        harryPotterService.getCharacters().map {
-            it.map { response ->
+    override suspend fun getCharacter(): Result<List<InfoCharacters>> {
+        return try {
+            Result.success(harryPotterService.getCharacters().map { response ->
                 response.map()
-            }
+            })
+        } catch (exception: Exception) {
+            Result.failure(exception)
+            //Tratar aqui os erros possíveis
         }
+    }
 }

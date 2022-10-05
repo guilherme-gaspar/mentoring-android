@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface HarryPotterService {
 
-    @GET("/characters")
-    suspend fun getCharacters(): Result<List<InfoCharactersResponse>>
+    @GET("api/characters")
+    suspend fun getCharacters(): List<InfoCharactersResponse>
 }

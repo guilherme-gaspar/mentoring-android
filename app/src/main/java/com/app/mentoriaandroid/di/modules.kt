@@ -7,7 +7,7 @@ import com.app.mentoriaandroid.data.retrofit.getInstance
 import com.app.mentoriaandroid.data.service.HarryPotterService
 import com.app.mentoriaandroid.domain.repository.GetCharacterRepository
 import com.app.mentoriaandroid.domain.usecase.GetCharacterUseCase
-import com.app.mentoriaandroid.presentation.HomeViewModel
+import com.app.mentoriaandroid.presentation.home.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit

@@ -1,4 +1,4 @@
-package com.app.mentoriaandroid.presentation
+package com.app.mentoriaandroid.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,12 +10,16 @@ import kotlinx.coroutines.launch
 
 internal class HomeViewModel(private val homeUseCase: GetCharacterUseCase) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<HomeState>(HomeState.Success(emptyList()))
-    val uiState: StateFlow<HomeState> = _uiState
+    private var _stateLiveData = MutableStateFlow(HomeState())
+    val stateLiveData: StateFlow<HomeState> = _stateLiveData
 
-    fun getCharacter() = viewModelScope.launch {
+    init {
+        getCharacter()
+    }
+
+    private fun getCharacter() = viewModelScope.launch {
         homeUseCase.invoke().onSuccess { listInfo ->
-            _uiState.value = HomeState.Success(listInfo)
+            _stateLiveData.value = HomeState(listCharacter = listInfo)
         }.onFailure {
             handleError(it)
         }
@@ -24,10 +28,20 @@ internal class HomeViewModel(private val homeUseCase: GetCharacterUseCase) : Vie
     private fun handleError(error: Throwable) {
         when (error) {
             is InternetConnectionException -> {
-                _uiState.value = HomeState.Error(error)
+                _stateLiveData.value.showScreenErrorInternet()
             }
             else -> {
+                _stateLiveData.value.showScreenErrorDefault()
             }
         }
+    }
+
+    fun changeVisibility() {
+        _stateLiveData.value = stateLiveData.value.copy(
+            listCharacter = _stateLiveData.value.listCharacter.map {
+                it.visibilityButton = false
+                it
+            }
+        )
     }
 }

@@ -1,10 +1,7 @@
 package com.app.mentoriaandroid.data.model
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
 data class InfoCharactersResponse(
         @SerializedName("name")
         val name: String,
@@ -14,8 +11,6 @@ data class InfoCharactersResponse(
         val house: String,
         @SerializedName("dateOfBirth")
         val dateOfBirth: String,
-        @SerializedName("yearOfBirth")
-        val yearOfBirth: String,
         @SerializedName("wizard")
         val wizard: Boolean,
         @SerializedName("wand")
@@ -26,14 +21,11 @@ data class InfoCharactersResponse(
         val actor: String,
         @SerializedName("image")
         val image: String
-) : Parcelable
+)
 
-@Parcelize
 data class WandResponse(
         @SerializedName("wood")
         val wood: String,
         @SerializedName("wood")
         val core: String,
-        @SerializedName("length")
-        val length: Int
-) : Parcelable
+)
