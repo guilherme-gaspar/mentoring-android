@@ -10,7 +10,7 @@ import com.app.mentoriaandroid.features.home.domain.model.InfoCharacters
 @Composable
 fun CharacterList(charactersList: List<InfoCharacters>, onEventClicked: (InfoCharacters) -> Unit) {
     LazyColumn(modifier = Modifier.fillMaxWidth()) {
-        items(items = charactersList) { it ->
+        items(items = charactersList) {
             CharacterRow(infoCharacters = it, onEventClicked = { infoCharacter ->
                 onEventClicked.invoke(infoCharacter)
             })

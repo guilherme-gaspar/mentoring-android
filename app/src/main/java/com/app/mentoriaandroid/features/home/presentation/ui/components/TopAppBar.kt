@@ -12,19 +12,17 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ToolbarHome() {
-    Column {
-        TopAppBar(
-            elevation = 1.dp,
-            title = {},
-            backgroundColor = Color.White,
-            navigationIcon = {
-                IconButton(onClick = {}) {
-                    Icon(Icons.Filled.Share, null)
-                }
-            }, actions = {
-                IconButton(onClick = { }) {
-                    Icon(Icons.Filled.Settings, null)
-                }
-            })
-    }
+    TopAppBar(
+        elevation = 1.dp,
+        title = {},
+        backgroundColor = Color.White,
+        navigationIcon = {
+            IconButton(onClick = {}) {
+                Icon(Icons.Filled.Share, null)
+            }
+        }, actions = {
+            IconButton(onClick = { }) {
+                Icon(Icons.Filled.Settings, null)
+            }
+        })
 }

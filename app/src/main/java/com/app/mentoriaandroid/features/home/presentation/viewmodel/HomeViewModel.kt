@@ -44,7 +44,7 @@ internal class HomeViewModel(private val homeUseCase: GetCharacterUseCase) : Vie
     }
 
     fun navigateToDetail() {
-        HomeEvent.GoToDetail
+        HomeEvent.GoToDetail.run()
     }
 
     private fun HomeEvent.run() {
