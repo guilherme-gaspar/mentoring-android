@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.app.mentoriaandroid.features.home.domain.model.InfoCharacters
-import com.app.mentoriaandroid.features.home.presentation.ui.activity.PADDING
+import com.app.mentoriaandroid.main.activity.PADDING
 
 @Composable
 fun CharacterRow(
@@ -27,6 +27,7 @@ fun CharacterRow(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.padding(top = 24.dp, start = 16.dp)
+                    .clickable { onEventClicked.invoke(infoCharacters) }
             ) {
                 RoundCornerImageView(
                     painter = rememberImagePainter(data = infoCharacters.image),

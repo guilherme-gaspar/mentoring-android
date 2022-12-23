@@ -1,55 +1,60 @@
-package com.app.mentoriaandroid.features.home.presentation.ui.activity
+package com.app.mentoriaandroid.main.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.app.mentoriaandroid.features.detail.presentation.viewmodel.DetailViewModel
 import com.app.mentoriaandroid.features.home.domain.model.InfoCharacters
 import com.app.mentoriaandroid.features.home.domain.model.Wand
 import com.app.mentoriaandroid.features.home.presentation.model.HomeEvent
 import com.app.mentoriaandroid.features.home.presentation.ui.components.CharacterList
-import com.app.mentoriaandroid.features.home.presentation.ui.components.ToolbarHome
-import com.app.mentoriaandroid.features.home.presentation.ui.screen.CharacterScreen
+import com.app.mentoriaandroid.features.home.presentation.ui.components.CharacterTopBar
 import com.app.mentoriaandroid.features.home.presentation.viewmodel.HomeViewModel
-import com.app.mentoriaandroid.navigation.detail.DetailNavigation
-import kotlinx.coroutines.flow.collectLatest
-import org.koin.android.ext.android.inject
+import com.app.mentoriaandroid.features.navigation.navgraph.NavGraph
+import com.app.mentoriaandroid.features.navigation.screen.Screen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 val PADDING = 8.dp
 
 class HomeComposeActivity : ComponentActivity() {
 
-    private val viewModel: HomeViewModel by viewModel()
-    private val detailNavigation: DetailNavigation by inject()
+    private val homeViewModel: HomeViewModel by viewModel()
+    private val detailViewModel: DetailViewModel by viewModel()
+    private lateinit var navController: NavHostController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupObserver()
         setContent {
+            setupObserverEvents()
+            navController = rememberNavController()
             Column {
-                ToolbarHome()
-                CharacterScreen(viewModel)
+                CharacterTopBar(navController)
+                NavGraph(
+                    navController = navController,
+                    homeViewModel = homeViewModel,
+                    detailViewModel = detailViewModel
+                )
             }
         }
     }
 
-    private fun setupObserver() {
-        lifecycleScope.launchWhenResumed {
-            viewModel.stateLiveData.collectLatest { state ->
+    @Composable
+    internal fun setupObserverEvents() {
+        when (val event = homeViewModel.eventLiveData.collectAsState(initial = null).value) {
+            is HomeEvent.GoToDetail -> {
+                navController.navigate(route = Screen.CharacterDetails.passCharacterId(event.infoCharacters))
             }
-            viewModel.eventLiveData.observe(this@HomeComposeActivity) { event ->
-                when (event) {
-                    is HomeEvent.GoToDetail -> {
-                        detailNavigation.navigateToDetail(this@HomeComposeActivity)
-                    }
-                    is HomeEvent.ShowMessage -> TODO()
-                }
+            is HomeEvent.ShowMessage -> {
+
             }
+            else -> {}
         }
     }
 
