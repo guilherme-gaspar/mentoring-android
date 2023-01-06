@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -13,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.app.mentoriaandroid.features.detail.presentation.viewmodel.DetailViewModel
 import com.app.mentoriaandroid.features.home.domain.model.InfoCharacters
 import com.app.mentoriaandroid.features.home.domain.model.Wand
+import com.app.mentoriaandroid.features.home.presentation.collectInLaunchedEffectWithLifecycle
 import com.app.mentoriaandroid.features.home.presentation.model.HomeEvent
 import com.app.mentoriaandroid.features.home.presentation.ui.components.CharacterList
 import com.app.mentoriaandroid.features.home.presentation.ui.components.CharacterTopBar
@@ -47,14 +47,16 @@ class HomeComposeActivity : ComponentActivity() {
 
     @Composable
     internal fun setupObserverEvents() {
-        when (val event = homeViewModel.eventLiveData.collectAsState(initial = null).value) {
-            is HomeEvent.GoToDetail -> {
-                navController.navigate(route = Screen.CharacterDetails.passCharacterId(event.infoCharacters))
-            }
-            is HomeEvent.ShowMessage -> {
 
+        homeViewModel.eventLiveData.collectInLaunchedEffectWithLifecycle { event ->
+            when (event) {
+                is HomeEvent.GoToDetail -> {
+                    navController.navigate(route = Screen.CharacterDetails.passCharacterId(event.infoCharacters))
+                }
+                is HomeEvent.ShowMessage -> {
+
+                }
             }
-            else -> {}
         }
     }
 

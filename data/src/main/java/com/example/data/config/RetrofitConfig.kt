@@ -1,6 +1,6 @@
-package com.app.mentoriaandroid.network.config
+package com.example.data.config
 
-import com.app.mentoriaandroid.BuildConfig
+import com.example.data.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

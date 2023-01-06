@@ -5,7 +5,6 @@ import com.app.mentoriaandroid.features.detail.presentation.viewmodel.DetailView
 import com.app.mentoriaandroid.features.home.data.datasource.GetCharacterRemoteDataSource
 import com.app.mentoriaandroid.features.home.data.datasource.GetCharacterRemoteDataSourceImpl
 import com.app.mentoriaandroid.features.home.data.repository.GetCharacterRepositoryImpl
-import com.app.mentoriaandroid.network.config.getInstance
 import com.app.mentoriaandroid.features.home.data.service.HarryPotterService
 import com.app.mentoriaandroid.features.home.domain.repository.GetCharacterRepository
 import com.app.mentoriaandroid.features.home.domain.usecase.GetCharacterUseCase
@@ -21,4 +20,5 @@ fun harryPotterModules() = module {
     factory { DetailUseCase() }
     viewModel { HomeViewModel(get()) }
     viewModel { DetailViewModel(get()) }
+    factory { get<Retrofit>().create(HarryPotterService::class.java) }
 }

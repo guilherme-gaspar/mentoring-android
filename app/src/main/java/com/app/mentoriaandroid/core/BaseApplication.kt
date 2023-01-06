@@ -2,7 +2,6 @@ package com.app.mentoriaandroid.core
 
 import android.app.Application
 import com.app.mentoriaandroid.di.KoinManager
-import com.app.mentoriaandroid.features.home.di.harryPotterModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

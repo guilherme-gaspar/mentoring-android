@@ -18,7 +18,7 @@ fun CharacterRow(
     Column {
         Row(
             modifier = Modifier
-                .clickable(onClick = { onEventClicked(infoCharacters) })
+                .clickable { onEventClicked.invoke(infoCharacters) }
                 .fillMaxWidth()
                 .padding(PADDING),
             verticalAlignment = Alignment.CenterVertically,
@@ -26,7 +26,8 @@ fun CharacterRow(
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(top = 24.dp, start = 16.dp)
+                modifier = Modifier
+                    .padding(top = 24.dp, start = 16.dp)
                     .clickable { onEventClicked.invoke(infoCharacters) }
             ) {
                 RoundCornerImageView(
